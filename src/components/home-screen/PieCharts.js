@@ -56,31 +56,35 @@ function TextWithColor({ color, text1, text2 }) {
     return (
         <View
             style={{
+                flex: 1,
                 flexDirection: 'row',
                 alignItems: 'center',
-                // justifyContent: 'center',
-                // backgroundColor: 'red',
-                padding: ms(5),
-                marginHorizontal: ms(5)
+                paddingVertical: ms(10),
+                marginHorizontal: ms(5),
+                justifyContent: 'space-between',
+                borderBottomWidth: 1,
+                borderColor: colors.border,
             }}
         >
             <View style={{
-                // justifyContent: 'center',
+                justifyContent: 'space-between',
                 height: 18,
                 width: 18,
                 backgroundColor: color || colors.secondary,
             }} />
-            <View style={{ width: '50%', alignItems: 'center', flexDirection: 'row', }}>
-                <Text style={{
-                    ...fontSizes.h5,
-                    marginHorizontal: ms(10)
-                }}>
-                    {text1}
-                </Text>
-                <Text style={{ textAlign: 'right' }}>
+            <View style={{ alignItems: 'center', flexDirection: 'row', }}>
+                <View style={{ width: ms(90) }}>
+                    <Text style={{
+                        ...fontSizes.h5,
+                        marginHorizontal: ms(10),
+                    }}>
+                        {text1}
+                    </Text>
+                </View>
+                <Text style={{ alignSelf: 'flex-end' }}>
                     {text2}
                 </Text>
             </View>
-        </View>
+        </View >
     )
 }
