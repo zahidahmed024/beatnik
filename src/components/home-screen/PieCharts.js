@@ -35,17 +35,17 @@ export default function PieCharts() {
                 <TextWithColor
                     color={colors.primary}
                     text1={"Target"}
-                    text2={"BDT 170,000"}
+                    text2={"BDT 170,000tk"}
                 />
                 <TextWithColor
                     color={colors.secondary}
                     text1={"Achieved"}
-                    text2={"BDT 170,000"}
+                    text2={"BDT 170,000tk"}
                 />
                 <TextWithColor
                     color={colors.danger}
                     text1={"Gap"}
-                    text2={"BDT 170,000"}
+                    text2={"BDT 170,000tk"}
                 />
             </View>
         </View >
@@ -58,17 +58,19 @@ function TextWithColor({ color, text1, text2 }) {
             style={{
                 flexDirection: 'row',
                 alignItems: 'center',
-                backgroundColor: 'red',
+                // justifyContent: 'center',
+                // backgroundColor: 'red',
                 padding: ms(5),
                 marginHorizontal: ms(5)
             }}
         >
             <View style={{
+                // justifyContent: 'center',
                 height: 18,
                 width: 18,
                 backgroundColor: color || colors.secondary,
             }} />
-            <View style={{ width: ms(180), flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View style={{ width: '50%', alignItems: 'center', flexDirection: 'row', }}>
                 <Text style={{
                     ...fontSizes.h5,
                     marginHorizontal: ms(10)
@@ -76,7 +78,7 @@ function TextWithColor({ color, text1, text2 }) {
                     {text1}
                 </Text>
                 <Text style={{ textAlign: 'right' }}>
-                    {text2}asdasdas
+                    {text2}
                 </Text>
             </View>
         </View>
