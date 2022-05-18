@@ -13,4 +13,5 @@ export const icons = {
     treehouse: require('./treehouse.png'),
     new: require('./new.png'),
     rightArrow: require('./rightarrow.png'),
+    search: require('./search.png'),
 }

@@ -14,7 +14,7 @@ export default function TopBarComponent({ state, descriptors, navigation, positi
             alignItems: 'center',
         }}>
             <View style={{
-                width: '70%'
+                width: '80%'
             }}>
                 <ScrollView
                     // contentContainerStyle={{ flexGrow: 1, }}

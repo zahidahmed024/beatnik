@@ -1,13 +1,36 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import React from 'react';
-import { Text } from 'react-native';
-import { Layout, PolicyFlatlist, TopBarComponent } from '../components';
+import { Text, View } from 'react-native';
+import { Layout, PolicyFlatlist, SearchInput, Switch, TopBarComponent } from '../components';
+import { colors } from '../constants';
+import { vs } from '../utils';
 
 const Tab = createMaterialTopTabNavigator();
 
 function PolicyScreen() {
     return (
-        <PolicyFlatlist />
+        <View style={{
+            flex: 1,
+            backgroundColor: colors.white
+        }}>
+            <View
+                style={{
+                    // flex: 1,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    borderBottomWidth: 1,
+                    borderBottomColor: colors.border,
+                    paddingVertical: vs(10),
+                }}
+            >
+                <SearchInput
+                    placeholder={"Search here...."}
+                />
+                <Switch />
+            </View>
+            <PolicyFlatlist />
+        </View>
     )
 }
 
@@ -16,13 +39,13 @@ function PolicyScreen() {
 
 export default function MyTabs() {
     return (
-        <Layout>
+        <Layout
+            title={'Policy list'}
+        >
             <Tab.Navigator
                 // screenOptions={{
                 //     tabBarScrollEnabled: true,
-
-                // }
-                // }
+                // }}
                 showPageIndicator
                 tabBar={(props) => <TopBarComponent {...props} />}
             >

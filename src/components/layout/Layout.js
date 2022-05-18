@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { icons } from '../../assets/index';
 import { colors, fontSizes } from '../../constants';
 import { ms } from '../../utils';
@@ -7,26 +8,32 @@ import { ms } from '../../utils';
 function Layout({ children, bar = true, leftButton = true, onPressLeft, title, drawer = false, containerStyle }) {
     return (
         <SafeAreaView style={style.container}>
-            <StatusBar backgroundColor={colors.primary} barStyle="dark-content" />
-            <View style={style.bar}>
-                <View style={{
-                    flexDirection: 'row',
-                }}>
-                    <TouchableOpacity
-                        onPress={() => alert('hallo')}
-                        style={{ width: ms(35) }}>
-                        <Image source={icons.left_arrow} style={style.leftButton} />
-                    </TouchableOpacity>
-                    <View style={style.titleContainer}>
-                        <Text style={style.titleText}>{title}</Text>
+            <StatusBar backgroundColor={colors.accent} barStyle="dark-content" />
+            <LinearGradient
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                colors={['#42c5f5', '#0096FF']}
+            >
+                <View style={style.bar}>
+                    <View style={{
+                        flexDirection: 'row',
+                    }}>
+                        {/* <TouchableOpacity
+                            onPress={() => alert('hallo')}
+                            style={{ width: ms(35) }}>
+                            <Image source={icons.left_arrow} style={style.leftButton} />
+                        </TouchableOpacity> */}
+                        <View style={style.titleContainer}>
+                            <Text style={style.titleText}>{title}</Text>
+                        </View>
+                    </View>
+                    <View
+                        style={style.rightContent}>
+                        <Image source={icons.notification} style={style.leftButton} />
+                        <Image source={icons.user} style={style.leftButton} />
                     </View>
                 </View>
-                <View
-                    style={style.rightContent}>
-                    <Image source={icons.notification} style={style.leftButton} />
-                    <Image source={icons.user} style={style.leftButton} />
-                </View>
-            </View>
+            </LinearGradient>
             <View style={style.bodyWrapper}>
                 <View style={[style.body, containerStyle]}>{children}</View>
             </View>

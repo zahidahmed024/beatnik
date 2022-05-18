@@ -2,7 +2,7 @@ import React from 'react'
 import { FlatList, Image, Text, View } from 'react-native'
 import { icons } from '../../assets'
 import { colors, fontSizes } from '../../constants'
-import { ms } from '../../utils'
+import { ms, vs } from '../../utils'
 import { GradientButton } from '../common'
 
 const data = [
@@ -62,7 +62,10 @@ export default function PolicyFlatlist() {
     return (
         <FlatList
             style={{
-                backgroundColor: colors.white
+                flex: 1,
+                backgroundColor: colors.white,
+                // marginBottom: vs(70)
+                // paddingBottom: vs(70)
             }}
             data={data}
             showsVerticalScrollIndicator={false}
@@ -90,13 +93,23 @@ function RenderItem({ img, title, isNew, coverage, term, members, Premium }) {
             borderColor: colors.border,
             padding: ms(10),
             borderRadius: ms(8),
-            marginVertical: ms(10)
+            marginVertical: ms(10),
+            shadowColor: "#000",
+            shadowOffset: {
+                width: 0,
+                height: 1,
+            },
+            shadowOpacity: 0.20,
+            shadowRadius: 1.41,
+
+            elevation: 2,
         }}>
             <View style={{
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                paddingVertical: ms(5)
+                paddingTop: ms(5),
+                paddingBottom: ms(10),
             }}>
                 <View style={{
                     flexDirection: 'row',
@@ -139,6 +152,10 @@ function RenderItem({ img, title, isNew, coverage, term, members, Premium }) {
                 flex: 1,
                 flexDirection: 'row',
                 justifyContent: 'space-around',
+                paddingVertical: vs(10),
+                borderTopWidth: 1,
+                borderBottomWidth: 1,
+                borderColor: colors.border,
             }}>
                 <KeyValueItem text="Coverage" value={coverage} />
                 <KeyValueItem text="Term" value={term} />
@@ -164,6 +181,8 @@ function RenderItem({ img, title, isNew, coverage, term, members, Premium }) {
                         style={{
                             borderBottomWidth: 1,
                             borderBottomColor: colors.primary,
+                            ...fontSizes.h6,
+                            fontWeight: '500',
                             color: colors.primary,
                         }}
                     >Add to compare</Text>
@@ -184,11 +203,13 @@ function KeyValueItem({ text, value }) {
             <View>
                 <Text style={{
                     ...fontSizes.h6,
-                    fontWeight: '500'
+                    fontWeight: '500',
+                    marginBottom: vs(5),
                 }}>{text}</Text>
                 <Text
                     style={{
                         ...fontSizes.h7,
+                        fontWeight: value.includes('BDT') ? '700' : '400',
                     }}
                 >{value}</Text>
             </View>

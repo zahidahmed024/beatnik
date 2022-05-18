@@ -37,7 +37,7 @@ const Input = ({ onChangeText, label = '', keyboardType = "default", autoCapital
                         backgroundColor: colors.white,
                         borderColor: colors.border,
                         borderRadius: ms(8),
-                        paddingHorizontal: ms(5),
+                        paddingHorizontal: ms(15),
                     },
                     rest.inputStyle,
                 ]}

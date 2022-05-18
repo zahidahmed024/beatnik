@@ -31,6 +31,7 @@ var styles = StyleSheet.create({
     },
     buttonText: (isGradient) => ({
         ...fontSizes.h7,
+        fontWeight: 'bold',
         textAlign: 'center',
         color: isGradient ? colors.white : colors.secondary,
         // backgroundColor: 'transparent',
