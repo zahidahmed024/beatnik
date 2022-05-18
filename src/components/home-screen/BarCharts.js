@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { BarChart } from "react-native-gifted-charts";
 import { colors, fontSizes } from '../../constants';
-import { ms } from '../../utlis';
+import { ms } from '../../utils';
 
 
 export default function BarCharts() {
@@ -17,7 +17,7 @@ export default function BarCharts() {
     return (
         <View style={{
             // backgroundColor: 'red',
-            padding: ms(20),
+            paddingVertical: ms(20),
             borderTopWidth: 1,
             borderBottomWidth: 1,
             borderColor: colors.border

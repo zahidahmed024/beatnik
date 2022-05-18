@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { PieChart } from "react-native-gifted-charts";
 import { colors, fontSizes } from '../../constants';
-import { ms } from '../../utlis';
+import { ms } from '../../utils';
 
 export default function PieCharts() {
     const pieData = [

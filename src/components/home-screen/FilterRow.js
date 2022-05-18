@@ -1,8 +1,8 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import { ms } from '../../utlis'
-import { colors, fontSizes } from '../../constants'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { icons } from '../../assets'
+import { colors, fontSizes } from '../../constants'
+import { ms } from '../../utils'
 
 export default function FilterRow() {
     return (

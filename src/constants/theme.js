@@ -1,4 +1,4 @@
-import { s } from "../utlis";
+import { s } from "../utils";
 
 export const colors = {
     accent: '#2995E0',
@@ -21,20 +21,26 @@ export const fontSizes = {
     },
     h2: {
         fontSize: s(24),
+        color: colors.text,
     },
     h3: {
         fontSize: s(20),
+        color: colors.text,
     },
     h4: {
         fontSize: s(16),
+        color: colors.text,
     },
     h5: {
         fontSize: s(14),
+        color: colors.text,
     },
     h6: {
         fontSize: s(12),
+        color: colors.text,
     },
     h7: {
         fontSize: s(10),
+        color: colors.text,
     }
 }

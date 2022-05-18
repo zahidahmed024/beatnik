@@ -1,17 +1,17 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
-import { BarCharts, FilterRow, PerformanceCharts, PieCharts } from '../components'
+import { ScrollView, StyleSheet } from 'react-native'
+import { BarCharts, FilterRow, Layout, PerformanceCharts, PieCharts } from '../components'
 
 export default function HomeScreen() {
     return (
-        <View style={{ flex: 1, }}>
+        <Layout>
             <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
                 <FilterRow />
                 <PieCharts />
                 <BarCharts />
                 <PerformanceCharts />
             </ScrollView>
-        </View>
+        </Layout>
     )
 }
 

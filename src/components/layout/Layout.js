@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity, StatusBar } from 'react-native';
-import { ms } from '../../utlis';
-import { colors, fontSizes } from '../../constants'
-import { icons } from '../../assets/index'
+import { Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { icons } from '../../assets/index';
+import { colors, fontSizes } from '../../constants';
+import { ms } from '../../utils';
 
 function Layout({ children, bar = true, leftButton = true, onPressLeft, title, drawer = false, containerStyle }) {
     return (

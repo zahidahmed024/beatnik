@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { BarChart } from 'react-native-gifted-charts';
+import { colors } from '../../constants';
 
 export default GroupedBars = () => {
     const barData = [
@@ -44,28 +45,7 @@ export default GroupedBars = () => {
             dataPointText: '40k',
         },
         { value: 20, frontColor: '#ED6665' },
-        {
 
-            value: 60,
-            label: 'May',
-            spacing: 2,
-            labelWidth: 30,
-            labelTextStyle: { color: 'gray' },
-            frontColor: '#177AD5',
-            topLabelComponent: () => (
-                <Text style={{ color: 'blue', fontSize: 16, paddingBottom: 20 }}>{60}</Text>
-            ),
-        },
-        { value: 40, frontColor: '#ED6665' },
-        {
-            value: 65,
-            label: 'Jun',
-            spacing: 2,
-            labelWidth: 30,
-            labelTextStyle: { color: 'gray' },
-            frontColor: '#177AD5',
-        },
-        { value: 30, frontColor: '#ED6665', },
     ];
     const initialData = [
         {
@@ -104,18 +84,7 @@ export default GroupedBars = () => {
             label: 'Jan',
             price: '40k'
         },
-        {
-            id: '3',
-            value: 34,
-            label: 'Jan',
-            price: '40k'
-        },
-        {
-            id: '4',
-            value: 23,
-            label: 'Mar',
-            price: '40k'
-        }
+
     ]
 
 
@@ -129,7 +98,7 @@ export default GroupedBars = () => {
                 labelWidth: isOdd ? 30 : null,
                 price: item.price,
                 labelTextStyle: { color: 'gray' },
-                frontColor: isOdd ? '#177AD5' : 'red',
+                frontColor: isOdd ? colors.primary : colors.secondary,
                 topLabelComponent: () => (
                     <Text style={{ color: 'blue', fontSize: 16, paddingBottom: 20 }}>{item.value}</Text>
                 ),
@@ -210,7 +179,7 @@ export default GroupedBars = () => {
                 paddingBottom: 40,
                 borderRadius: 10,
             }}>
-            {renderTitle()}
+            {/* {renderTitle()} */}
             <BarChart
                 data={allChartData}
                 isAnimated
@@ -223,8 +192,8 @@ export default GroupedBars = () => {
                 yAxisLabelSuffix={'k'}
                 barWidth={20}
                 spacing={24}
-                roundedTop
-                roundedBottom
+                // roundedTop
+                // roundedBottom
                 hideRules
                 xAxisThickness={0}
                 yAxisThickness={0}
