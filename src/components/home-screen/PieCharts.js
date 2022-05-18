@@ -1,6 +1,6 @@
-import { View, Text, Image } from 'react-native'
+import React from 'react';
+import { Text, View } from 'react-native';
 import { PieChart } from "react-native-gifted-charts";
-import React from 'react'
 import { colors, fontSizes } from '../../constants';
 import { ms } from '../../utlis';
 
@@ -17,20 +17,11 @@ export default function PieCharts() {
                 alignItems: 'center',
                 paddingVertical: ms(20)
             }}>
-                <PieChart
-                    donut
+                <SingleChart
+                    status={'completed'}
+                    pieData={pieData}
                     radius={60}
-                    innerRadius={55}
-                    data={pieData}
-                    centerLabelComponent={() => {
-                        return (
-                            <View style={{ backgroundColor: colors.secondary, alignItems: 'center', justifyContent: 'center', width: 100, height: 100, borderRadius: 50 }}>
-                                <Text style={{ fontSize: 16, color: colors.white, fontWeight: 'bold' }}>70%</Text>
-                                <Text style={{ fontSize: 16, color: colors.white }}>Completed</Text>
-                            </View>
-                        )
-
-                    }}
+                    fontSize={14}
                 />
                 <View>
                     <TextWithColor
@@ -51,9 +42,9 @@ export default function PieCharts() {
                 </View>
             </View >
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: ms(10) }}>
-                <SingleChart pieData={pieData} />
-                <SingleChart pieData={pieData} />
-                <SingleChart pieData={pieData} />
+                <SingleChart radius={50} pieData={pieData} status={'Target'} />
+                <SingleChart radius={50} pieData={pieData} status={'Achieved'} />
+                <SingleChart radius={50} pieData={pieData} status={'Gap'} />
             </View>
             <View style={{
                 flexDirection: 'row',
@@ -106,18 +97,26 @@ function TextWithColor({ color, text1, text2 }) {
 }
 
 
-function SingleChart({ pieData }) {
+function SingleChart({ radius = 50, pieData = [], status = '', fontSize = 10 }) {
+    let height = (radius / 3) * 5;
     return (
         <PieChart
             donut
-            radius={35}
-            innerRadius={30}
+            radius={radius}
+            innerRadius={radius - 5}
             data={pieData}
             centerLabelComponent={() => {
                 return (
-                    <View style={{ backgroundColor: colors.secondary, alignItems: 'center', justifyContent: 'center', width: 50, height: 50, borderRadius: 50 }}>
-                        <Text style={{ fontSize: 10, color: colors.white, fontWeight: 'bold' }}>70%</Text>
-                        <Text style={{ fontSize: 10, color: colors.white }}>Completed</Text>
+                    <View style={{
+                        backgroundColor: colors.secondary,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: height,
+                        height: height,
+                        borderRadius: height * 2
+                    }}>
+                        <Text style={{ fontSize: fontSize, color: colors.white, fontWeight: 'bold' }}>70%</Text>
+                        <Text style={{ fontSize: fontSize, color: colors.white }}>{status}</Text>
                     </View>
                 )
 

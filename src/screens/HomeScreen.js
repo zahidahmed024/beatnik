@@ -1,12 +1,16 @@
-import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
-import { FilterRow, PieCharts } from '../components'
+import { ScrollView, StyleSheet, View } from 'react-native'
+import { BarCharts, FilterRow, PerformanceCharts, PieCharts } from '../components'
 
 export default function HomeScreen() {
     return (
-        <View style={styles.container}>
-            <FilterRow />
-            <PieCharts />
+        <View style={{ flex: 1, }}>
+            <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+                <FilterRow />
+                <PieCharts />
+                <BarCharts />
+                <PerformanceCharts />
+            </ScrollView>
         </View>
     )
 }
@@ -14,5 +18,13 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        // paddingVertical: ms(20)
     }
 })
+// yarn add  @react-native-masked-view/masked-view@^0.2.6 
+// @react-navigation/bottom-tabs@^6.0.9
+// @react-navigation/drawer@ ^6.1.8    
+// @react-navigation/material-top-tabs@^6.0.6     
+// @react-navigation/native@^6.0.6
+// @react-navigation/native-stack@^6.2.5     
+// @react-navigation/stack"@^6.0.11 
