@@ -42,5 +42,9 @@ export const fontSizes = {
     h7: {
         fontSize: s(10),
         color: colors.text,
+    },
+    h8: {
+        fontSize: s(8),
+        color: colors.text,
     }
 }

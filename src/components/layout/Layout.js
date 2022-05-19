@@ -3,9 +3,9 @@ import { Image, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-na
 import LinearGradient from 'react-native-linear-gradient';
 import { icons } from '../../assets/index';
 import { colors, fontSizes } from '../../constants';
-import { ms } from '../../utils';
+import { ms, vs } from '../../utils';
 
-function Layout({ children, bar = true, leftButton = true, onPressLeft, title, drawer = false, containerStyle }) {
+function Layout({ children, isDashboard = false, leftButton = true, onPressLeft, title, drawer = false, containerStyle }) {
     return (
         <SafeAreaView style={style.container}>
             <StatusBar backgroundColor={colors.accent} barStyle="dark-content" />
@@ -18,6 +18,33 @@ function Layout({ children, bar = true, leftButton = true, onPressLeft, title, d
                     <View style={{
                         flexDirection: 'row',
                     }}>
+                        {
+                            isDashboard ? (
+                                <View style={{
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                }}>
+                                    <Image
+                                        source={icons.propic}
+                                        style={{
+                                            height: 34,
+                                            width: 34,
+                                            borderRadius: 20,
+                                        }}
+                                    />
+                                    <View style={{
+                                        paddingHorizontal: ms(10),
+                                    }}>
+                                        <Text style={{ ...fontSizes.h7, fontWeight: '700', marginVertical: vs(3), color: colors.white }}>Hi ,Sam</Text>
+                                        <Text style={{ ...fontSizes.h7, fontWeight: '700', color: colors.white }}>HSDK12412312412321</Text>
+                                    </View>
+                                </View>
+
+                            ) : (
+                                <View></View>
+                            )
+
+                        }
                         {/* <TouchableOpacity
                             onPress={() => alert('hallo')}
                             style={{ width: ms(35) }}>
@@ -30,7 +57,9 @@ function Layout({ children, bar = true, leftButton = true, onPressLeft, title, d
                     <View
                         style={style.rightContent}>
                         <Image source={icons.notification} style={style.leftButton} />
-                        <Image source={icons.user} style={style.leftButton} />
+                        {
+                            !isDashboard ? <Image source={icons.user} style={[style.leftButton, { marginLeft: ms(10) }]} /> : null
+                        }
                     </View>
                 </View>
             </LinearGradient>
@@ -63,6 +92,7 @@ const style = StyleSheet.create({
         width: ms(22),
         height: ms(22),
         tintColor: colors.white,
+        // margingLeft: ms(20),
         // alignItems: 'center',
     },
     titleContainer: {
@@ -79,7 +109,7 @@ const style = StyleSheet.create({
         width: ms(70),
         padding: ms(5),
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'flex-end',
     },
     bodyWrapper: {
         flex: 1,

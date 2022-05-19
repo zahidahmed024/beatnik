@@ -101,7 +101,6 @@ function RenderItem({ img, title, isNew, coverage, term, members, Premium }) {
             },
             shadowOpacity: 0.20,
             shadowRadius: 1.41,
-
             elevation: 2,
         }}>
             <View style={{
@@ -136,10 +135,10 @@ function RenderItem({ img, title, isNew, coverage, term, members, Premium }) {
                         <Image
                             style={{
                                 justifyContent: 'flex-end',
-                                width: 34,
-                                height: 34,
+                                width: 54,
+                                height: 20,
                                 marginRight: -12,
-                                marginTop: -29,
+                                // marginTop: -29,
                             }}
                             source={icons.new}
                         />)

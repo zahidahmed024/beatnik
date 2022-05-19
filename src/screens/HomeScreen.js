@@ -4,7 +4,9 @@ import { BarCharts, FilterRow, Layout, PerformanceCharts, PieCharts } from '../c
 
 export default function HomeScreen() {
     return (
-        <Layout>
+        <Layout
+            isDashboard={true}
+        >
             <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
                 <FilterRow />
                 <PieCharts />
@@ -21,7 +23,7 @@ const styles = StyleSheet.create({
         // paddingVertical: ms(20)
     }
 })
-// yarn add  @react-native-masked-view/masked-view@^0.2.6 
+// yarn add  @react-native-masked-view/masked-view@^0.2.6
 // @react-navigation/bottom-tabs@^6.0.9
 // @react-navigation/drawer@ ^6.1.8    
 // @react-navigation/material-top-tabs@^6.0.6     

@@ -6,7 +6,12 @@ import { ms } from '../../utils'
 
 export default function FilterRow() {
     return (
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <View style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingTop: ms(10),
+            paddingBottom: ms(15),
+        }}>
             <View style={{ flexDirection: 'row' }}>
                 <FilterButton
                     text={"Daily"}
@@ -50,16 +55,17 @@ function FilterButton({ backgroundColor, textColor, text, leftIcon }) {
                 leftIcon ? <Image
                     source={leftIcon}
                     style={{
-                        width: ms(15),
-                        height: ms(15),
-                        marginHorizontal: 2,
+                        width: ms(12),
+                        height: ms(12),
+                        marginHorizontal: ms(3),
                         tintColor: colors.white
                     }}
                 /> : null
             }
             <Text
                 style={{
-                    ...fontSizes.h6,
+                    ...fontSizes.h7,
+                    fontWeight: '500',
                     color: textColor,
                 }}
             >{text}</Text>

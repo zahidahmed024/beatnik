@@ -14,4 +14,5 @@ export const icons = {
     new: require('./new.png'),
     rightArrow: require('./rightarrow.png'),
     search: require('./search.png'),
+    propic: require('./propic.png'),
 }

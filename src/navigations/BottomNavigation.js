@@ -86,7 +86,7 @@ export default function BottomNavigation() {
                         tabBarLabel: 'Account',
                         tabBarIcon: ({ color, size }) => (
                             <TabIcon
-                                icon={icons.account}
+                                icon={icons.user}
                                 size={size}
                                 color={color}
                             />

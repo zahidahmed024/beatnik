@@ -1,52 +1,10 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { BarChart } from 'react-native-gifted-charts';
-import { colors } from '../../constants';
+import { colors, fontSizes } from '../../constants';
+import { ms, vs } from '../../utils';
 
 export default GroupedBars = () => {
-    const barData = [
-        {
-            value: 40,
-            label: 'Jan',
-            spacing: 2,
-            labelWidth: 30,
-            price: '40k',
-            labelTextStyle: { color: 'gray' },
-            frontColor: '#177AD5',
-        },
-        { value: 20, frontColor: '#ED6665' },
-        {
-            value: 50,
-            label: 'Feb',
-            spacing: 2,
-            labelWidth: 30,
-            dataPointText: '40k',
-            labelTextStyle: { color: 'gray' },
-            frontColor: '#177AD5',
-        },
-        { value: 40, frontColor: '#ED6665' },
-        {
-            value: 75,
-            label: 'Mar',
-            spacing: 2,
-            labelWidth: 30,
-            labelTextStyle: { color: 'gray' },
-            frontColor: '#177AD5',
-            dataPointText: '40k',
-        },
-        { value: 25, frontColor: '#ED6665' },
-        {
-            value: 30,
-            label: 'Apr',
-            spacing: 2,
-            labelWidth: 30,
-            labelTextStyle: { color: 'gray' },
-            frontColor: '#177AD5',
-            dataPointText: '40k',
-        },
-        { value: 20, frontColor: '#ED6665' },
-
-    ];
     const initialData = [
         {
             id: '1',
@@ -98,9 +56,11 @@ export default GroupedBars = () => {
                 labelWidth: isOdd ? 30 : null,
                 price: item.price,
                 labelTextStyle: { color: 'gray' },
-                frontColor: isOdd ? colors.primary : colors.secondary,
+                frontColor: isOdd ? colors.secondary : colors.primary,
                 topLabelComponent: () => (
-                    <Text style={{ color: 'blue', fontSize: 16, paddingBottom: 20 }}>{item.value}</Text>
+                    <Text style={{
+                        ...fontSizes.h8,
+                    }}>{item.value}k</Text>
                 ),
             }
         })
@@ -108,65 +68,46 @@ export default GroupedBars = () => {
 
     const allChartData = generateChartData(initialData)
 
-    console.log('alldata', allChartData)
+    // console.log('alldata', allChartData)
+
     const renderTitle = () => {
         return (
-            <View style={{ marginVertical: 30 }}>
-                <Text
-                    style={{
-                        color: 'white',
-                        fontSize: 20,
-                        fontWeight: 'bold',
-                        textAlign: 'center',
-                    }}>
-                    Chart title goes here
-                </Text>
-                <View
-                    style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        justifyContent: 'space-evenly',
-                        marginTop: 24,
-                        backgroundColor: 'yellow',
-                    }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <View
-                            style={{
-                                height: 12,
-                                width: 12,
-                                borderRadius: 6,
-                                backgroundColor: '#177AD5',
-                                marginRight: 8,
-                            }}
-                        />
-                        <Text
-                            style={{
-                                width: 60,
-                                height: 16,
-                                color: 'lightgray',
-                            }}>
-                            Point 01
-                        </Text>
-                    </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <View
-                            style={{
-                                height: 12,
-                                width: 12,
-                                borderRadius: 6,
-                                backgroundColor: '#ED6665',
-                                marginRight: 8,
-                            }}
-                        />
-                        <Text
-                            style={{
-                                width: 60,
-                                height: 16,
-                                color: 'lightgray',
-                            }}>
-                            Point 02
-                        </Text>
-                    </View>
+            <View style={{
+                alignSelf: 'flex-end',
+                marginBottom: vs(-30),
+                marginRight: ms(40)
+            }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: vs(10) }}>
+                    <View
+                        style={{
+                            height: 12,
+                            width: 12,
+                            backgroundColor: colors.primary,
+                            marginRight: 8,
+                        }}
+                    />
+                    <Text
+                        style={{
+                            ...fontSizes.h7
+                        }}>
+                        Target
+                    </Text>
+                </View>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <View
+                        style={{
+                            height: 12,
+                            width: 12,
+                            backgroundColor: colors.secondary,
+                            marginRight: 8,
+                        }}
+                    />
+                    <Text
+                        style={{
+                            ...fontSizes.h7
+                        }}>
+                        Acheived
+                    </Text>
                 </View>
             </View>
         )
@@ -175,36 +116,56 @@ export default GroupedBars = () => {
     return (
         <View
             style={{
-                // backgroundColor: '#333340',
-                paddingBottom: 40,
+                marginVertical: vs(12),
+                paddingVertical: vs(20),
+                borderBottomWidth: 1,
+                borderTopWidth: 1,
+                borderColor: colors.border,
                 borderRadius: 10,
             }}>
-            {/* {renderTitle()} */}
-            <BarChart
-                data={allChartData}
-                isAnimated
-                // dataPointsShape="circular"
-                // showLine={true0}
-                // dataPointText="dasasdasdas"
-                // referenceLine1Position={0}
-                // verticalLinesUptoDataPoint={true}
-                xAxisLabelTextStyle={{ color: 'red' }}
-                yAxisLabelSuffix={'k'}
-                barWidth={20}
-                spacing={24}
-                // roundedTop
-                // roundedBottom
-                hideRules
-                xAxisThickness={0}
-                yAxisThickness={0}
-                yAxisTextStyle={{ color: 'blue' }}
-                // labelsExtraHeight={43}
-                // referenceLine1Position={12}
-                // hideYAxisText={false}
-                // showYAxisIndices={true}
-                noOfSections={3}
-                maxValue={75}
-            />
+            <Text
+                style={{
+                    ...fontSizes.h4,
+                    fontWeight: '600',
+                    color: colors.primary,
+                    paddingBottom: vs(20)
+                }}
+            >Performance Analysis</Text>
+            {renderTitle()}
+            <View style={{
+                alignSelf: 'center',
+                marginLeft: ms(-40),
+            }}>
+                <BarChart
+                    data={allChartData}
+                    isAnimated
+                    // dataPointsShape="circular"
+                    // showLine={true0}
+                    // showBarTops={true}
+                    // dataPointText="dasasdasdas"
+                    // referenceLine1Position={0}
+                    // verticalLinesUptoDataPoint={true}
+                    // xAxisLabelTextStyle={{ color: 'red' }}
+                    yAxisLabelSuffix={' k'}
+                    barWidth={20}
+                    spacing={24}
+                    roundedTop
+                    // roundedBottom
+                    hideRules
+                    xAxisThickness={.5}
+                    xAxisLabelTextStyle={{
+                        color: 'white',
+                    }}
+                    yAxisThickness={.2}
+                    yAxisTextStyle={{ ...fontSizes.h7, fontWeight: '300' }}
+                    // labelsExtraHeight={43}
+                    // referenceLine1Position={12}
+                    // hideYAxisText={false}
+                    // showYAxisIndices={true}
+                    noOfSections={3}
+                    maxValue={75}
+                />
+            </View>
         </View>
     );
 };
