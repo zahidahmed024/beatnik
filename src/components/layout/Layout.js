@@ -5,7 +5,7 @@ import { icons } from '../../assets/index';
 import { colors, fontSizes } from '../../constants';
 import { ms, vs } from '../../utils';
 
-function Layout({ children, isDashboard = false, leftButton = true, onPressLeft, title, drawer = false, containerStyle }) {
+function Layout({ children, isDashboard = false, title, containerStyle }) {
     return (
         <SafeAreaView style={style.container}>
             <StatusBar backgroundColor={colors.accent} barStyle="dark-content" />
@@ -45,11 +45,6 @@ function Layout({ children, isDashboard = false, leftButton = true, onPressLeft,
                             )
 
                         }
-                        {/* <TouchableOpacity
-                            onPress={() => alert('hallo')}
-                            style={{ width: ms(35) }}>
-                            <Image source={icons.left_arrow} style={style.leftButton} />
-                        </TouchableOpacity> */}
                         <View style={style.titleContainer}>
                             <Text style={style.titleText}>{title}</Text>
                         </View>

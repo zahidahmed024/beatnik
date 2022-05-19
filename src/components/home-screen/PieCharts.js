@@ -3,12 +3,11 @@ import { Text, View } from 'react-native';
 import { PieChart } from "react-native-gifted-charts";
 import { colors, fontSizes } from '../../constants';
 import { ms, vs } from '../../utils';
+import { pieData } from '../../data';
+
 
 export default function PieCharts() {
-    const pieData = [
-        { value: 70, color: colors.secondary },
-        { value: 30, color: colors.danger }
-    ];
+
     return (
         <View>
             <View style={{

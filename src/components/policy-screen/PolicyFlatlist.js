@@ -1,62 +1,10 @@
 import React from 'react'
 import { FlatList, Image, Text, View } from 'react-native'
 import { icons } from '../../assets'
-import { colors, fontSizes } from '../../constants'
+import { colors, fontSizes, strings } from '../../constants'
 import { ms, vs } from '../../utils'
 import { GradientButton } from '../common'
-
-const data = [
-    {
-        id: 1,
-        img: icons.peace,
-        title: 'Nischinto Shobai',
-        isNew: true,
-        coverage: "BDT 320,500",
-        term: "365 Days",
-        members: "Self, Spouse & Children",
-        Premium: "BDT 500",
-    },
-    {
-        id: 2,
-        img: icons.treehouse,
-        title: 'Shanti-Amra Shobai',
-        isNew: false,
-        coverage: "BDT 320,500",
-        term: "365 Days",
-        members: "Self, Spouse & Children",
-        Premium: "BDT 500",
-    },
-    {
-        id: 3,
-        img: icons.peace,
-        title: 'Nischinto Shobai',
-        isNew: true,
-        coverage: "BDT 320,500",
-        term: "365 Days",
-        members: "Self, Spouse & Children",
-        Premium: "BDT 500",
-    },
-    {
-        id: 4,
-        img: icons.treehouse,
-        title: 'Shanti-Amra Shobai',
-        isNew: false,
-        coverage: "BDT 320,500",
-        term: "365 Days",
-        members: "Self, Spouse & Children",
-        Premium: "BDT 500",
-    },
-    {
-        id: 5,
-        img: icons.peace,
-        title: 'Nischinto Shobai',
-        isNew: false,
-        coverage: "BDT 320,500",
-        term: "365 Days",
-        members: "Self, Spouse & Children",
-        Premium: "BDT 500",
-    },
-]
+import { policyListData } from '../../data'
 
 export default function PolicyFlatlist() {
     return (
@@ -67,7 +15,7 @@ export default function PolicyFlatlist() {
                 // marginBottom: vs(70)
                 // paddingBottom: vs(70)
             }}
-            data={data}
+            data={policyListData}
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
                 <RenderItem
@@ -87,22 +35,23 @@ export default function PolicyFlatlist() {
 
 function RenderItem({ img, title, isNew, coverage, term, members, Premium }) {
     return (
-        <View style={{
-            borderWidth: 1,
-            backgroundColor: colors.white,
-            borderColor: colors.border,
-            padding: ms(10),
-            borderRadius: ms(8),
-            marginVertical: ms(10),
-            shadowColor: "#000",
-            shadowOffset: {
-                width: 0,
-                height: 1,
-            },
-            shadowOpacity: 0.20,
-            shadowRadius: 1.41,
-            elevation: 2,
-        }}>
+        <View
+            style={{
+                borderWidth: 1,
+                backgroundColor: colors.white,
+                borderColor: colors.border,
+                padding: ms(10),
+                borderRadius: ms(8),
+                marginVertical: ms(10),
+                shadowColor: "#000",
+                shadowOffset: {
+                    width: 0,
+                    height: 1,
+                },
+                shadowOpacity: 0.20,
+                shadowRadius: 1.41,
+                elevation: 2,
+            }}>
             <View style={{
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -156,10 +105,10 @@ function RenderItem({ img, title, isNew, coverage, term, members, Premium }) {
                 borderBottomWidth: 1,
                 borderColor: colors.border,
             }}>
-                <KeyValueItem text="Coverage" value={coverage} />
-                <KeyValueItem text="Term" value={term} />
-                <KeyValueItem text="Members" value={members} />
-                <KeyValueItem text="Premium" value={Premium} />
+                <KeyValueItem text={strings.coverage} value={coverage} />
+                <KeyValueItem text={strings.term} value={term} />
+                <KeyValueItem text={strings.members} value={members} />
+                <KeyValueItem text={strings.premium} value={Premium} />
             </View>
 
 
@@ -184,12 +133,10 @@ function RenderItem({ img, title, isNew, coverage, term, members, Premium }) {
                             fontWeight: '500',
                             color: colors.primary,
                         }}
-                    >Add to compare</Text>
+                    >{strings.add_to_compare}</Text>
                 </View>
                 <GradientButton isGradient={false} title={'View Details'} />
                 <GradientButton title={'Purchase'} />
-                {/* <GradientButton title={'View Details'} /> */}
-
             </View>
         </View>
 

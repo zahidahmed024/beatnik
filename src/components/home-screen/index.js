@@ -1,4 +1,4 @@
-import BarCharts from "./BarCharts";
+import CustomerCharts from "./CustomerCharts";
 import FilterRow from "./FilterRow";
 import PerformanceCharts from "./PerformanceCharts";
 import PieCharts from "./PieCharts";
@@ -6,6 +6,6 @@ import PieCharts from "./PieCharts";
 export {
     FilterRow,
     PieCharts,
-    BarCharts,
+    CustomerCharts,
     PerformanceCharts
 };

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, Text, TouchableOpacity } from 'react-native'
 import { icons } from '../../assets'
-import { colors, fontSizes } from '../../constants'
+import { colors, fontSizes, strings } from '../../constants'
 import { ms, vs } from '../../utils'
 
 export default function InputUpload() {
@@ -19,9 +19,9 @@ export default function InputUpload() {
             <Text style={{
                 paddingVertical: 8,
                 ...fontSizes.h7,
-                lineHeight:30,
+                lineHeight: 30,
                 fontWeight: 'bold'
-            }}>Upload Picture</Text>
+            }}>{strings.upload_picture}</Text>
             <Image
                 source={icons.upload}
                 style={{

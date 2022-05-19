@@ -1,10 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { icons } from '../assets';
-import { colors } from '../constants';
+import { colors, routes, strings } from '../constants';
 import { AccountScreen, HomeScreen, PolicyScreen } from '../screens';
+import { vs } from '../utils';
+import PolicyNavigations from './PolicyNavigations';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,13 +19,10 @@ export default function BottomNavigation() {
                     tabBarHideOnKeyboard: true,
                     // tabBarStyle: { height: vs(70) },
                 }}
-            // tabBarOptions={{
-            //     // keyboardHidesTabBar: true
-            //  }}         
             >
-                <Tab.Screen name="Policy" component={PolicyScreen}
+                <Tab.Screen name={routes.policy} component={PolicyNavigations}
                     options={{
-                        tabBarLabel: 'Policy',
+                        tabBarLabel: `${strings.policy}`,
                         tabBarIcon: ({ color, size, focused }) => (
                             <TabIcon
                                 icon={icons.policy}
@@ -33,9 +32,9 @@ export default function BottomNavigation() {
                         )
                     }}
                 />
-                <Tab.Screen name="Calculator" component={SettingsScreen}
+                <Tab.Screen name={routes.calculator} component={HomeScreen}
                     options={{
-                        tabBarLabel: 'Calculator',
+                        tabBarLabel: `${strings.calculator}`,
                         tabBarIcon: ({ color, size }) => (
                             <TabIcon
                                 icon={icons.calculator}
@@ -46,28 +45,12 @@ export default function BottomNavigation() {
                     }}
                 />
                 <Tab.Screen
+                    name={routes.home} component={HomeScreen}
                     options={{
-                        tabBarLabel: 'Home',
+                        tabBarLabel: `${strings.home}`,
                         tabBarIcon: ({ color, size }) => (
-                            <View style={{
-                                width: size + 40,
-                                height: size + 10,
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                borderWidth: 10,
-                                borderBottomLeftRadius: size + 10,
-                                borderBottomRightRadius: size + 10,
-                                borderTopLeftWidth: 0,
-                                borderTopRightWidth: 0,
-                                borderColor: colors.border,
-                                backgroundColor: colors.border
-                            }}>
-                                <View style={{
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    borderRadius: 30,
-                                    marginBottom: 30,
-                                }}>
+                            <View style={styles.homeButton(size)}>
+                                <View style={styles.homeInner}>
                                     <Image
                                         source={icons.home}
                                         style={{
@@ -80,10 +63,10 @@ export default function BottomNavigation() {
                             </View>
                         ),
                     }}
-                    name="Home" component={HomeScreen} />
-                <Tab.Screen name="Account" component={AccountScreen}
+                />
+                <Tab.Screen name={routes.account} component={AccountScreen}
                     options={{
-                        tabBarLabel: 'Account',
+                        tabBarLabel: `${strings.account}`,
                         tabBarIcon: ({ color, size }) => (
                             <TabIcon
                                 icon={icons.user}
@@ -92,9 +75,9 @@ export default function BottomNavigation() {
                             />
                         )
                     }} />
-                <Tab.Screen name="Campaign" component={SettingsScreen}
+                <Tab.Screen name={routes.campaign} component={HomeScreen}
                     options={{
-                        tabBarLabel: 'Campaign',
+                        tabBarLabel: `${strings.campaign}`,
                         tabBarIcon: ({ color, size }) => (
                             <TabIcon
                                 icon={icons.campaign}
@@ -109,9 +92,6 @@ export default function BottomNavigation() {
     )
 }
 
-function SettingsScreen() {
-    return <Text>dummy</Text>
-}
 
 function TabIcon({ icon, size, color }) {
     return (
@@ -120,9 +100,33 @@ function TabIcon({ icon, size, color }) {
                 height: size,
                 width: size,
                 padding: 5,
-                // tintColor: color
+                tintColor: color,
             }}
             source={icon}
         />
     )
 }
+
+const styles = StyleSheet.create({
+
+    homeButton: (size) => ({
+        width: size + 40,
+        height: size + 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 10,
+        borderBottomLeftRadius: size + 10,
+        borderBottomRightRadius: size + 10,
+        borderTopLeftWidth: 0,
+        borderTopRightWidth: 0,
+        borderColor: colors.border,
+        backgroundColor: colors.border
+    }),
+    homeInner: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 30,
+        marginBottom: 30,
+    }
+
+})

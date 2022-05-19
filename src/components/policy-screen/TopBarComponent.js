@@ -61,7 +61,7 @@ export default function TopBarComponent({ state, descriptors, navigation, positi
 
                         return (
                             <TouchableOpacity
-                                // key={index}
+                                key={index}
                                 accessibilityRole="button"
                                 accessibilityState={isFocused ? { selected: true } : {}}
                                 accessibilityLabel={options.tabBarAccessibilityLabel}
