@@ -1,17 +1,12 @@
 import React from 'react'
-import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { icons } from '../../assets'
 import { colors, fontSizes } from '../../constants'
 import { ms } from '../../utils'
 
 export default function FilterRow() {
     return (
-        <View style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingTop: ms(10),
-            paddingBottom: ms(15),
-        }}>
+        <View style={styles.container}>
             <View style={{ flexDirection: 'row' }}>
                 <FilterButton
                     text={"Daily"}
@@ -42,24 +37,11 @@ export default function FilterRow() {
 
 function FilterButton({ backgroundColor, textColor, text, leftIcon }) {
     return (
-        <TouchableOpacity style={{
-            padding: ms(5),
-            margin: ms(5),
-            backgroundColor: backgroundColor,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            borderRadius: ms(2),
-        }}>
+        <TouchableOpacity style={styles.itemContainer(backgroundColor)}>
             {
                 leftIcon ? <Image
                     source={leftIcon}
-                    style={{
-                        width: ms(12),
-                        height: ms(12),
-                        marginHorizontal: ms(3),
-                        tintColor: colors.white
-                    }}
+                    style={styles.itemImage}
                 /> : null
             }
             <Text
@@ -72,3 +54,27 @@ function FilterButton({ backgroundColor, textColor, text, leftIcon }) {
         </TouchableOpacity>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingTop: ms(10),
+        paddingBottom: ms(15),
+    },
+    itemContainer: (backgroundColor) => ({
+        padding: ms(5),
+        margin: ms(5),
+        backgroundColor: backgroundColor,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderRadius: ms(2),
+    }),
+    itemImage: {
+        width: ms(12),
+        height: ms(12),
+        marginHorizontal: ms(3),
+        tintColor: colors.white
+    }
+})

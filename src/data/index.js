@@ -14,6 +14,18 @@ export const pieData = [
     { value: 70, color: colors.secondary },
     { value: 30, color: colors.danger }
 ];
+export const pieData2 = [
+    { value: 90, color: colors.primary, },
+    { value: 10, color: colors.lightPrimary }
+];
+export const pieData3 = [
+    { value: 70, color: colors.secondary },
+    { value: 30, color: colors.lightPrimary }
+];
+export const pieData4 = [
+    { value: 30, color: colors.danger },
+    { value: 70, color: colors.lightPrimary }
+];
 export const performanceData = [
     {
         id: '1',

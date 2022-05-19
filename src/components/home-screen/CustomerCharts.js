@@ -1,33 +1,23 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { BarChart } from "react-native-gifted-charts";
 import { colors, fontSizes, strings } from '../../constants';
-import { ms, vs } from '../../utils';
-import { customerChartData } from '../../data'
+import { customerChartData } from '../../data';
+import { ms } from '../../utils';
 
 export default function CustomerCharts() {
 
     const allChartData = generateChartData(customerChartData)
 
     return (
-        <View style={{
-            paddingTop: ms(20),
-            justifyContent: 'center',
-            borderTopWidth: 1,
-            borderBottomWidth: 1,
-            borderColor: colors.border
-        }}>
+        <View style={styles.container}>
             <Text
-                style={{
-                    ...fontSizes.h4,
-                    fontWeight: '600',
-                    color: colors.primary
-                }}
+                style={styles.headerText}
             >{strings.customer_management}</Text>
             <BarChart
                 // hideYAxisText={true}
                 yAxisTextStyle={{
-                    width: 100,
+                    // width: 100,
                     ...fontSizes.h7,
                     opacity: 0.6,
                     transform: [{ rotate: '-90deg' }]
@@ -53,20 +43,12 @@ const generateChartData = (items = []) => {
         return {
             value: item.value, frontColor: item.frontColor,
             topLabelComponent: () => (
-                <Text style={{
-                    ...fontSizes.h7,
-                    // color: 'blue',
-                    width: ms(200),
-                    letterSpacing: 0.8,
-                    marginTop: vs(5),
-                    textAlign: 'left',
-                    marginLeft: 60 + 67,
-                    paddingBottom: 20
-                }}>
+                <Text style={styles.generatedText}>
                     <Text
                         style={{
                             ...fontSizes.h7,
                             color: colors.white,
+                            marginTop: -20,
                         }}
                     >
                         ({item.value}) {''}
@@ -77,3 +59,24 @@ const generateChartData = (items = []) => {
         }
     })
 }
+
+const styles = StyleSheet.create({
+    container: {
+        paddingTop: ms(20),
+        justifyContent: 'center',
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+        borderColor: colors.border
+    },
+    headerText: {
+        ...fontSizes.h4,
+        fontWeight: '600',
+        color: colors.primary
+    },
+    generatedText: {
+        ...fontSizes.h7,
+        width: ms(200),
+        letterSpacing: 0.8,
+        marginLeft: 60 + 67,
+    }
+})

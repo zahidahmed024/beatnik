@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { icons } from '../../assets';
 import { colors, fontSizes } from '../../constants';
 import { ms } from '../../utils';
@@ -7,12 +7,7 @@ import { ms } from '../../utils';
 export default function TopBarComponent({ state, descriptors, navigation, position }) {
     let scrollRef = useRef()
     return (
-        <View style={{
-            paddingVertical: ms(10),
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-        }}>
+        <View style={styles.container}>
             <View style={{
                 width: '80%'
             }}>
@@ -68,21 +63,9 @@ export default function TopBarComponent({ state, descriptors, navigation, positi
                                 testID={options.tabBarTestID}
                                 onPress={onPress}
                                 onLongPress={onLongPress}
-                                style={{
-                                    // flex: 1,
-                                    // backgroundColor: isFocused ? colors.secondary : colors.lightSecondary,
-                                    // height: vs(23),
-                                    textTransform: "none",
-                                    padding: ms(8),
-                                    borderBottomWidth: 1,
-                                    borderBottomColor: isFocused ? colors.primary : colors.white,
-                                }}
+                                style={styles.tab(isFocused)}
                             >
-                                <Text style={{
-                                    ...fontSizes.h5,
-                                    fontWeight: '600',
-                                    alignSelf: 'center'
-                                }}>{label}</Text>
+                                <Text style={styles.label}>{label}</Text>
                             </TouchableOpacity>
                         );
                     })}
@@ -98,3 +81,24 @@ export default function TopBarComponent({ state, descriptors, navigation, positi
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        paddingVertical: ms(10),
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    tab: (isFocused) => ({
+        textTransform: "none",
+        padding: ms(8),
+        borderBottomWidth: 1,
+        borderBottomColor: isFocused ? colors.primary : colors.white,
+    }),
+    label: {
+        ...fontSizes.h5,
+        fontWeight: '600',
+        alignSelf: 'center'
+    }
+
+})
